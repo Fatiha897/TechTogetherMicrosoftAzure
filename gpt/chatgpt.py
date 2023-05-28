@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import openai
 
 load_dotenv()
-openai.api_key = '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'
+openai.api_key = ""
 completion = openai.ChatCompletion()
 
 def askgpt(question, chat_log=None):

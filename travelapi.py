@@ -36,7 +36,7 @@ import re
 
 
 def hotelsnearby(budget, loc="11208", distance="10"):
-    answer, log = askgpt("Can you give me another 10 hotels within"+ str(distance) +" miles from"+ str(loc) +"under"+ str(budget) +"with their average cost and website url. Do not number the list. Seperate it wish dahses.")
+    answer, log = askgpt("Can you give me another 10 hotels within"+ distance +" miles from"+ loc +"under"+ budget +"with their average cost and website url. Do not number the list. Seperate it wish dahses.")
     return answer
 
 
@@ -75,9 +75,9 @@ def groceriesbudget(loc="Queens", dur="7"):
 
 
 def main():
-    answer = hotelsnearby("Brooklyn", "15", "100")
+    answer = hotelsnearby("100", "Brooklyn", "15")
     # answer = foodnearby("100","Brooklyn", "15")
     # answer = groceriesbudget("Manhattan", "5",)
     print(answer)
 
-# main()
+main()
