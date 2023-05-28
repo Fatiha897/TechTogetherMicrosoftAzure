@@ -36,8 +36,27 @@ import re
 
 
 def hotelsnearby(budget, loc="11208", distance="10"):
-    answer, log = askgpt("Can you give me another 10 hotels within"+ distance +" miles from"+ loc +"under"+ budget +"with their average cost and website url. Do not number the list. Seperate it wish dahses.")
-    return answer
+    # answer, log = askgpt("Can you give me another 10 hotels within"+ distance +" miles from"+ loc +"under"+ budget +"with their average cost and website url. Do not number the list. Seperate it wish dahses.")
+    temp_ans = '''
+    Certainly! Here are ten more hotels within 100 miles of 15 Under Brooklyn with their average cost and website URL:
+
+- The Ludlow Hotel (New York, NY) - Average cost: $299 per night - https://www.ludlowhotel.com/
+- Hotel Indigo Newark Downtown (Newark, NJ) - Average cost: $159 per night - https://www.ihg.com/hotelindigo/hotels/us/en/newark/ewrby/hoteldetail
+- The Asbury Hotel (Asbury Park, NJ) - Average cost: $209 per night - https://www.theasburyhotel.com/
+- The Harbor House Bed & Breakfast (Stamford, CT) - Average cost: $169 per night - https://www.harborhouseinn.com/
+- The High Line Hotel (New York, NY) - Average cost: $329 per night - https://www.thehighlinehotel.com/
+- The Jane Hotel (New York, NY) - Average cost: $199 per night - https://www.thejanenyc.com/
+- The William Vale (Brooklyn, NY) - Average cost: $289 per night - https://www.thewilliamvale.com/
+- The Graham Georgetown (Washington D.C.) - Average cost: $269 per night - https://www.thegrahamgeorgetown.com/
+- The Time New York (New York, NY) - Average cost: $269 per night - https://www.thetimehotels.com/new-york/
+- The Iroquois New York (New York, NY) - Average cost: $279 per night - https://www.iroquoisny.com/
+    '''
+    # ans = answer.split("\n\n")
+    # print(ans)
+    # parsed_ans = ans[1].split("\n")
+    # for elem in ans:
+    #     print(elem.split("-"))
+    return ["hotel 1", "hotel 2", "hotel 3" ]
 
 
 # def foodnearby(budget, loc="11208", distance="10"):
@@ -46,32 +65,35 @@ def hotelsnearby(budget, loc="11208", distance="10"):
 
 
 def foodnearby(budget, loc="11208", distance="10"):
-    lst = []
-    answer, log = askgpt("Can you give me 10 restaurants within"+ str(distance) +" miles from"+ str(loc) +"under"+ str(budget) +"with their average cost and website url. Do not number the list. Seperate it wish dahses.")
-    parsed = answer.split('\n\n')
-    places = parsed[1].split('\n')
-    for place in places:
-        lst.append(place.split("-"))
-    return lst
+    # lst = []
+    # answer, log = askgpt("Can you give me 10 restaurants within"+ str(distance) +" miles from"+ str(loc) +"under"+ str(budget) +"with their average cost and website url. Do not number the list. Seperate it wish dahses.")
+    # parsed = answer.split('\n\n')
+    # places = parsed[1].split('\n')
+    # for place in places:
+    #     lst.append(place.split("-"))
+    # # return lst
+    return ["place 1", "place 2", "place 3" ]
+
 
 
 # needs name not zip code
 # not ideal to use 7 or 14 day stay
 def groceriesbudget(loc="Queens", dur="7"):
     # answer, log = askgpt('What does the average person in'+ loc +'spend in groceries for a'+ dur +'day stay')
-    assumed_cost = 0
-    answer, log = askgpt('What does the average person spend in groceries per week in'+loc+'? Put it in list form. Do not number the list. Seperate it wish dahses.')
-    est = answer.split()
-    for elem in est:
-        if "$" in elem:
-            price = re.split('[;$,.-]', elem)
-            for p in price:
-                if p.isdigit():
-                    cost = int(p)
-                    if cost>assumed_cost:
-                        assumed_cost = cost
-    daily = assumed_cost//7
-    return daily*int(dur)
+    # assumed_cost = 0
+    # answer, log = askgpt('What does the average person spend in groceries per week in'+loc+'? Put it in list form. Do not number the list. Seperate it wish dahses.')
+    # est = answer.split()
+    # for elem in est:
+    #     if "$" in elem:
+    #         price = re.split('[;$,.-]', elem)
+    #         for p in price:
+    #             if p.isdigit():
+    #                 cost = int(p)
+    #                 if cost>assumed_cost:
+    #                     assumed_cost = cost
+    # daily = assumed_cost//7
+    # return daily*int(dur)
+    return 20
 
 
 def main():
@@ -80,4 +102,4 @@ def main():
     # answer = groceriesbudget("Manhattan", "5",)
     print(answer)
 
-main()
+# main()

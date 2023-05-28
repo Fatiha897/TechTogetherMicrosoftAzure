@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&amp;display=swap">
     <link rel="stylesheet" href="static/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="static/assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
@@ -28,21 +32,50 @@
             <h1>Plan the Hotel Location</h1>
             <hr class="star-light">
         </div>
-        <div class="container">
-            <div style="height: 25px;"></div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-xl-6" id="Hotel-Map"></div>
-                <div class="col-md-6" style="height: 400px;">
-                    <nav class="navbar navbar-light navbar-expand-md py-3">
-                        <div class="container"><button class="navbar-toggler" data-bs-toggle="collapse"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><button class="btn btn-primary" id="Hotel-Previous" type="submit" style="color: rgb(24,188,156);background: rgb(247,247,247);">Previous</button><button class="btn btn-primary" id="Hotel-Select" type="submit" style="color: rgb(24,188,156);background: rgb(234,239,238);">Select</button><button class="btn btn-primary" id="Hotel-Next" type="submit" style="color: rgb(24,188,156);background: rgb(239,242,242);">Next</button></div>
-                    </nav>
+
+            
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" style="margin-left: 43%;">
+                <div class="carousel-item active">
+                    <div class="card" style="width: 18rem; color: black;">
+                        <div class="card-body">
+                          <h5 class="card-title">Hotels</h5>
+                          <p class="card-text">Go left or right for hotels near you.</p>
+                          <button class="card-link"></button>
+                          <button class="card-link"></button>
+                        </div>
+                      </div>
                 </div>
+                {% for hotel in hotels%}
+                <div class="carousel-item">
+                    <div class="card" style="width: 18rem; color: black;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{hotel}}</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="card-link">Card link</a>
+                         </br>
+                          <a href="#" class="card-link">Select</a>
+                        </div>
+                      </div>
+                </div>
+                {% endfor %}
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
+        <!-- <button class="btn btn-primary" id="Hotel-Select" type="submit" style="color: rgb(24,188,156);background: rgb(234,239,238);">Select</button> -->
+
+        
         <div class="container"><a class="btn btn-primary" href="food" id="Go-To-Food" type="submit" style="background: rgb(241,247,245);border-color: var(--bs-btn-bg);color: var(--bs-btn-bg);margin: 8px;position: static;">Plan For Food Locations &gt;</a></div>
     </header>
+
+
     <footer class="text-center footer">
         <div class="container">
             <div class="row">
@@ -69,7 +102,8 @@
     <div class="text-center text-white copyright py-4">
         <div class="container"><small>Copyright © MarcoSolo2023</small></div>
     </div>
-    <div class="d-lg-none scroll-to-top position-fixed rounded"><a class="text-center d-block rounded text-white" href="#page-top"><i class="fa fa-chevron-up"></i></a></div>
+    
+    <!-- <div class="d-lg-none scroll-to-top position-fixed rounded"><a class="text-center d-block rounded text-white" href="#page-top"><i class="fa fa-chevron-up"></i></a></div>
     <div class="modal text-center" role="dialog" tabindex="-1" id="portfolio-modal-1">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -183,7 +217,8 @@
                 <div class="modal-footer pb-5"><a class="btn btn-primary btn-lg mx-auto rounded-pill portfolio-modal-dismiss" role="button" data-bs-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Close Project</a></div>
             </div>
         </div>
-    </div>
+    </div> -->
+
     <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="static/assets/js/freelancer.js"></script>
 </body>

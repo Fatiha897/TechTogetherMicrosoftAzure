@@ -9,6 +9,7 @@ class Trip:
         self.length = ""
         self.budget = ""
         self.stay = []
+        self.food = []
 
 trip = Trip()
 
@@ -35,19 +36,21 @@ def transport():
 @app.route("/hotels", methods =["GET", "POST"])
 def hotels():
     # return "hotels"+ str(hotels_lst)
-    return render_template('hotel.html', hotels = str(hotels(100)))
+    print("HOTELS", trip.stay)
+    return render_template('hotel.html', hotels = hotelsnearby(trip.budget, trip.location))
 
 
 @app.route("/food", methods =["GET", "POST"])
 def food():
     # return "hotels"+ str(hotels_lst)
-    return render_template('food.html')
+    return render_template('food.html', foods = foodnearby(trip.budget, trip.location))
 
 
 @app.route("/summary", methods =["GET", "POST"])
 def summary():
     # return "hotels"+ str(hotels_lst)
-    return render_template('summary.html')
+    print("TRIP INFO", trip.start, trip.location, trip.length, trip.budget)
+    return render_template('summary.html', start = trip.start, loc = trip.location, leng = trip.length, budget = trip.budget, hotels = trip.stay, foods=trip.food)
 
 
 @app.route("/startTrip", methods =["GET", "POST"])
